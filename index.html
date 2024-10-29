@@ -3,290 +3,346 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beautiful Birthday Celebration!</title>
+    <title>Happy Birthday, My Love!</title>
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
-            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             min-height: 100vh;
+            background: linear-gradient(to bottom right, #ffccd5, #e0c3fc);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             overflow-x: hidden;
         }
         .container {
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 0 40px rgba(255, 105, 180, 0.2);
-            text-align: center;
             max-width: 600px;
-            width: 90%;
+            width: 100%;
+            margin: 2rem;
             position: relative;
             overflow: hidden;
         }
-        h1 {
-            color: #ff69b4;
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        .gradient-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            animation: gradient 3s ease infinite;
         }
-        .cake {
-            font-size: 5rem;
-            margin-bottom: 1rem;
-            position: relative;
-            animation: bounce 2s infinite;
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        h1 {
+            color: #d81b60;
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            animation: bounce 1s infinite;
         }
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            50% { transform: translateY(-10px); }
         }
-        .btn {
-            background-color: #ff69b4;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 25px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin: 0.5rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .subtitle {
+            color: #6a1b9a;
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
         }
-        .btn:hover {
-            background-color: #ff1493;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
-        }
-        #uploadedImage, #onlineImage {
-            max-width: 100%;
-            border-radius: 10px;
-            margin-top: 1rem;
-            display: none;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-        #uploadedImage:hover, #onlineImage:hover {
-            transform: scale(1.05);
-        }
-        .balloon {
-            position: fixed;
-            width: 40px;
-            height: 50px;
-            border-radius: 50%;
-            animation: float 15s ease-in-out infinite;
-        }
-        @keyframes float {
-            0% { transform: translateY(100vh) rotate(0deg); }
-            100% { transform: translateY(-100vh) rotate(360deg); }
-        }
-        .memory-game {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 1rem;
-        }
-        .memory-card {
-            width: 80px;
-            height: 80px;
-            margin: 5px;
-            background-color: #ffd700;
-            border-radius: 10px;
+        .image-container {
+            width: 100%;
+            height: 300px;
+            background-color: #f0f0f0;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 2rem;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 1rem;
         }
-        .memory-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
-        .memory-card.flipped {
-            background-color: #ff69b4;
+        .upload-btn {
+            display: block;
+            width: 100%;
+            padding: 0.5rem;
+            background-color: #6a1b9a;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-bottom: 1rem;
         }
-        #message {
+        .message {
+            text-align: center;
             color: #333;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        .timeline {
+            margin-bottom: 2rem;
+        }
+        .timeline h2 {
+            color: #6a1b9a;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .timeline-dot {
+            width: 12px;
+            height: 12px;
+            background-color: #ff758c;
+            border-radius: 50%;
+            margin-right: 1rem;
+        }
+        .timeline-content h3 {
+            color: #6a1b9a;
+            margin: 0;
+            font-size: 1rem;
+        }
+        .timeline-content p {
+            color: #666;
+            margin: 0;
+        }
+        .gift-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+        .gift-btn:hover {
+            background: linear-gradient(to right, #ff5277, #ff6b9f);
+        }
+        .gift-reveal {
+            display: none;
+            background-color: #fff0f5;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .gift-icon {
+            font-size: 3rem;
+            color: #ff758c;
+            margin-bottom: 1rem;
+        }
+        .hearts {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        .heart {
+            color: #ff4081;
+            font-size: 2rem;
+            animation: pulse 1s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .wishes {
+            text-align: center;
+        }
+        .wishes h3 {
+            color: #6a1b9a;
             font-size: 1.2rem;
             margin-bottom: 1rem;
-            font-style: italic;
         }
-        .confetti {
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            background-color: #ffd700;
-            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-            animation: confettiFall 5s ease-in-out infinite;
+        .wishes ul {
+            list-style-type: none;
+            padding: 0;
         }
-        @keyframes confettiFall {
-            0% { transform: translateY(-100vh) rotate(0deg); }
-            100% { transform: translateY(100vh) rotate(720deg); }
+        .wishes li {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        footer {
+            text-align: center;
+            color: #666;
+            margin-top: 2rem;
+        }
+        footer a {
+            color: #6a1b9a;
+            text-decoration: none;
+        }
+        .music-toggle {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Happy Birthday!</h1>
-        <div class="cake">🎂</div>
-        <p id="message">Let's celebrate your special day!</p>
-        <input type="file" id="imageUpload" accept="image/*" style="display: none;">
-        <button class="btn" onclick="document.getElementById('imageUpload').click()">Upload Your Picture</button>
-        <img id="uploadedImage" alt="Uploaded picture">
-        <img id="onlineImage" alt="Birthday wish">
-        <button class="btn" onclick="startParty()">Start the Party!</button>
-        <div id="activities" style="display: none;">
-            <button class="btn" onclick="blowCandles()">Blow Out Candles</button>
-            <button class="btn" onclick="startMemoryGame()">Play Party Game</button>
-            <button class="btn" onclick="showBirthdayWish()">Birthday Wish</button>
+    <button class="music-toggle" aria-label="Toggle music">🎵</button>
+    <audio id="bgMusic" loop>
+        <source src="https://example.com/romantic-background-music.mp3" type="audio/mpeg">
+    </audio>
+    
+    <main class="container">
+        <div class="gradient-bar"></div>
+        <h1>Happy Birthday, My Love!</h1>
+        <p class="subtitle">Today is all about you!</p>
+        
+        <div class="image-container" id="imageContainer">
+            <img id="uploadedImage" style="display: none;" alt="Birthday Girl">
+            <span id="uploadPrompt">📷 Click to upload a picture</span>
         </div>
-        <div id="memoryGame" class="memory-game" style="display: none;"></div>
-    </div>
+        <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+        <button class="upload-btn" id="uploadBtn">Upload Your Beautiful Picture</button>
+        
+        <p class="message">
+            My dearest, on this special day, I want to express how much you mean to me. 
+            Your smile brightens my darkest days, your laughter is my favorite melody, 
+            and your love is the greatest gift I've ever received. 
+            May this birthday be as wonderful and extraordinary as you are!
+        </p>
+        
+        <section class="timeline">
+            <h2>Our Journey Together</h2>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>The day we met</h3>
+                    <p>My world changed forever</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Today</h3>
+                    <p>Celebrating the amazing person you are</p>
+                </div>
+            </div>
+        </section>
+        
+        <button class="gift-btn" id="giftBtn">Click to Reveal Your Virtual Gift</button>
+        
+        <div class="gift-reveal" id="giftReveal">
+            <div class="gift-icon">🎁</div>
+            <h3>A Promise of Endless Love</h3>
+            <p>
+                This virtual gift represents my commitment to filling each day of your life with love, 
+                laughter, and unforgettable moments. Just as my love for you knows no bounds, 
+                this gift is a promise of a future filled with joy and adventures together.
+            </p>
+        </div>
+        
+        <div class="hearts">
+            <span class="heart">❤️</span>
+            <span class="heart" style="animation-delay: 0.2s;">❤️</span>
+            <span class="heart" style="animation-delay: 0.4s;">❤️</span>
+            <span class="heart" style="animation-delay: 0.6s;">❤️</span>
+            <span class="heart" style="animation-delay: 0.8s;">❤️</span>
+        </div>
+        
+        <div class="wishes">
+            <h3>Wishing you a year filled with:</h3>
+            <ul>
+                <li>✨ Endless reasons to smile</li>
+                <li>🎉 Adventures that take your breath away</li>
+                <li>💖 Love that grows stronger each day</li>
+                <li>🌟 Dreams that turn into beautiful realities</li>
+                <li>🎂 Cake that's as sweet as you are</li>
+            </ul>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Created with boundless love by</p>
+        <a href="https://www.instagram.com/ayushkssk" target="_blank" rel="noopener noreferrer">@ayushkssk</a>
+    </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <script>
-        // Since we can't use an actual API key, we'll use a placeholder image URL
-        const placeholderImageUrl = 'https://source.unsplash.com/featured/?birthday';
+        document.addEventListener('DOMContentLoaded', function() {
+            const imageContainer = document.getElementById('imageContainer');
+            const uploadedImage = document.getElementById('uploadedImage');
+            const uploadPrompt = document.getElementById('uploadPrompt');
+            const imageUpload = document.getElementById('imageUpload');
+            const uploadBtn = document.getElementById('uploadBtn');
+            const giftBtn = document.getElementById('giftBtn');
+            const giftReveal = document.getElementById('giftReveal');
+            const musicToggle = document.querySelector('.music-toggle');
+            const bgMusic = document.getElementById('bgMusic');
 
-        async function fetchBirthdayImage() {
-            try {
-                // In a real scenario, we would fetch from the API. Here, we're using a placeholder.
-                return placeholderImageUrl;
-            } catch (error) {
-                console.error('Error fetching image:', error);
-                return null;
-            }
-        }
+            imageContainer.addEventListener('click', () => imageUpload.click());
+            uploadBtn.addEventListener('click', () => imageUpload.click());
 
-        async function startParty() {
-            document.getElementById('activities').style.display = 'block';
-            createBalloons();
-            createConfetti();
-            await updateOnlineImage();
-        }
-
-        async function updateOnlineImage() {
-            const imageUrl = await fetchBirthdayImage();
-            if (imageUrl) {
-                const onlineImage = document.getElementById('onlineImage');
-                onlineImage.src = imageUrl + '&random=' + new Date().getTime(); // Add random parameter to prevent caching
-                onlineImage.style.display = 'block';
-            }
-        }
-
-        function blowCandles() {
-            const cake = document.querySelector('.cake');
-            cake.textContent = '🎉';
-            setTimeout(() => {
-                cake.textContent = '🎂';
-                createConfetti();
-            }, 2000);
-        }
-
-        function createBalloons() {
-            const colors = ['#ff69b4', '#ff6347', '#ffd700', '#00ced1', '#9370db'];
-            for (let i = 0; i < 20; i++) {
-                const balloon = document.createElement('div');
-                balloon.className = 'balloon';
-                balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                balloon.style.left = `${Math.random() * 100}vw`;
-                balloon.style.animationDuration = `${15 + Math.random() * 10}s`;
-                document.body.appendChild(balloon);
-            }
-        }
-
-        function createConfetti() {
-            const colors = ['#ff69b4', '#ff6347', '#ffd700', '#00ced1', '#9370db'];
-            for (let i = 0; i < 50; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                confetti.style.left = `${Math.random() * 100}vw`;
-                confetti.style.animationDuration = `${3 + Math.random() * 2}s`;
-                confetti.style.animationDelay = `${Math.random() * 3}s`;
-                document.body.appendChild(confetti);
-                setTimeout(() => confetti.remove(), 5000);
-            }
-        }
-
-        const imageUpload = document.getElementById('imageUpload');
-        const uploadedImage = document.getElementById('uploadedImage');
-
-        imageUpload.addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    uploadedImage.src = e.target.result;
-                    uploadedImage.style.display = 'block';
+            imageUpload.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        uploadedImage.src = e.target.result;
+                        uploadedImage.style.display = 'block';
+                        uploadPrompt.style.display = 'none';
+                    }
+                    reader.readAsDataURL(file);
                 }
-                reader.readAsDataURL(file);
-            }
-        });
-
-        const birthdayWishes = [
-            "May your day be filled with laughter and joy!",
-            "Wishing you a year ahead full of amazing adventures!",
-            "Here's to another year of making wonderful memories!",
-            "May all your birthday wishes come true!",
-            "Celebrating you today and always!"
-        ];
-
-        async function showBirthdayWish() {
-            const wish = birthdayWishes[Math.floor(Math.random() * birthdayWishes.length)];
-            document.getElementById('message').textContent = wish;
-            createConfetti();
-            await updateOnlineImage();
-        }
-
-        function startMemoryGame() {
-            const gameContainer = document.getElementById('memoryGame');
-            gameContainer.innerHTML = '';
-            gameContainer.style.display = 'flex';
-            const emojis = ['🎁', '🎉', '🎈', '🎊', '🍰', '🕯️', '🎵', '🎸'];
-            const gameEmojis = [...emojis, ...emojis].sort(() => Math.random() - 0.5);
-            
-            gameEmojis.forEach((emoji, index) => {
-                const card = document.createElement('div');
-                card.className = 'memory-card';
-                card.dataset.value = emoji;
-                card.onclick = flipCard;
-                gameContainer.appendChild(card);
             });
-        }
 
-        let flippedCards = [];
-        function flipCard() {
-            if (flippedCards.length < 2 && !this.classList.contains('flipped')) {
-                this.textContent = this.dataset.value;
-                this.classList.add('flipped');
-                flippedCards.push(this);
-                
-                if (flippedCards.length === 2) {
-                    setTimeout(checkMatch, 500);
+            giftBtn.addEventListener('click', function() {
+                giftReveal.style.display = 'block';
+                confetti({
+                    particleCount: 100,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
+            });
+
+            let isPlaying = false;
+            musicToggle.addEventListener('click', function() {
+                if (isPlaying) {
+                    bgMusic.pause();
+                    musicToggle.textContent = '🔇';
+                } else {
+                    bgMusic.play();
+                    musicToggle.textContent = '🎵';
                 }
-            }
-        }
+                isPlaying = !isPlaying;
+            });
 
-        function checkMatch() {
-            const [card1, card2] = flippedCards;
-            if (card1.dataset.value === card2.dataset.value) {
-                card1.onclick = null;
-                card2.onclick = null;
-                createConfetti();
-            } else {
-                card1.textContent = '';
-                card2.textContent = '';
-                card1.classList.remove('flipped');
-                card2.classList.remove('flipped');
-            }
-            flippedCards = [];
-        }
+            // Initial confetti
+            setTimeout(() => {
+                confetti({
+                    particleCount: 100,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
+            }, 1000);
+        });
     </script>
 </body>
 </html>
